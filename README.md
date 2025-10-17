@@ -53,19 +53,19 @@ Toolboxes:
 - Optional: MATLAB Runtime R2023b for standalone execution
 
   ## 📄 License
-This project is proprietary. Unauthorized distribution or modification is prohibited without explicit consent.
+==This project is proprietary. Unauthorized distribution or modification is prohibited without explicit consent.==
 
 ## 🧭 Getting Started
 
 Clone the repository:
 
-```git clone https://github.com/<your-username>/CAPS.git```
-```cd CAPS```
+`git clone https://github.com/<your-username>/CAPS.git`
+`cd CAPS`
 
 Open Setup.prj in MATLAB and click Run to initialize dependencies.
 
 Launch the GUI:
-```run('RAPS_GUI_gdop_250729_acc.mlapp')```
+`run('RAPS_GUI_gdop_250729_acc.mlapp')`
 
 
 (Optional) Compile to standalone using MATLAB Compiler.
