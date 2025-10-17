@@ -1,5 +1,6 @@
 # CoverageAnalysisAndPlottingSuite
-CAPS (Coverage Analysis and Planning Suite) is a comprehensive tool designed for wireless network engineers, survey teams, and researchers to perform efficient Line-of-Sight (LoS) coverage analysis and planning. With a powerful graphical interface and real-time map integration.
+CAPS (Coverage Analysis and Planning Suite) is a MATLAB-based application designed for radar coverage analysis, sensor line-of-sight computation, and geospatial visualization.
+The suite integrates GIS data, terrain modeling, and sensor configuration utilities to provide mission-level coverage planning, visualization, and reporting capabilities.
 CAPS enables users to:
 Load and visualize base station and survey point data on interactive maps.
 Perform multi-site coverage analysis using topographic and terrain data.
