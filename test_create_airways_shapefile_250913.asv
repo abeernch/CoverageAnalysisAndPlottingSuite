@@ -1,0 +1,39 @@
+d = (fullfile(pwd,"Misc/","GMCC_maps_files/","Pak_Airways.txt"));
+data = readmatrix(d);
+
+% Extract latitude and longitude
+lats = data(:, 1);
+lons = data(:, 2);
+
+% Find break points (where coordinates are 0, 9999)
+break_indices = find(lats == 0 & lons == 9999);
+
+% Create cell array to store each airway segment
+segments = {};
+start_idx = 1;
+airways_struct = struct('Geometry', {}, 'BoundingBox', {}, 'X', {}, 'Y', {}, 'Id', {});
+for i = 1:length(break_indices)
+    end_idx = break_indices(i) - 1;
+    if end_idx >= start_idx
+        segments{end+1} = [lons(start_idx:end_idx), lats(start_idx:end_idx)];
+        airways_struct(i).Geometry = 'Line';
+        airways_struct(i).BoundingBox = [min(segments{i}(:,1)), min(segments{i}(:,2));
+            max(segments{i}(:,1)), max(segments{i}(:,2))];
+        airways_struct(i).X = segments{i}(:,1)';
+        airways_struct(i).Y = segments{i}(:,2)';
+        airways_struct(i).Id = i;
+        airways_struct(i).SegmentName = sprintf('Airway_Segment_%d', i);
+    end
+    start_idx = break_indices(i) + 1;
+end
+% Save the shapefile
+shapewrite(airways_struct, 'map_data\layers\Airwy);
+
+
+%%
+f = figure;
+g = geoaxes;
+hold on;
+for i=1:length(segments)
+    geoplot(segments{i}(:,2),segments{i}(:,1),'LineStyle',':','Color','k','Marker','hexagram','LineWidth',1.5,'MarkerSize',3)
+end
